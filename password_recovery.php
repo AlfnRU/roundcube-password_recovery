@@ -324,6 +324,12 @@ class password_recovery extends rcube_plugin {
                     }
                 }
             }
+
+            if (!$this->rc->config->get('pr_use_question')) {
+                unset($new_fields['question']);
+                unset($new_fields['answer']);
+            }
+
             $p['form']['addressing']['content'] = $new_fields;
 
             if($this->user['username']){

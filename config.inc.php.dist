@@ -18,7 +18,7 @@ $config['pr_fields'] = [
 $config['pr_admin_email'] = 'postmaster@your.domain.com';
 
 // Use secret question/answer to confirmation password recovery
-$config['pr_use_question'] = true;
+$config['pr_use_question'] = false;
 
 // Use message with code to confirmation password recovery
 $config['pr_use_confirm_code'] = true;
