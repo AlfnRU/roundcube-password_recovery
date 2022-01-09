@@ -1,4 +1,4 @@
-#### Password Recovery Plugin for Roundcube
+# Password Recovery Plugin for Roundcube
 
  Plugin that adds functionality so that a user can 
  create a new password if the original is lost.
@@ -16,7 +16,7 @@
  The Password plugin can also be used when configured accordingly.
 
 
-# Install
+### Install
  1. Place this plugin folder into plugins directory of Roundcube
  2. Add 'password_recovery' to $config['plugins'] in your Roundcube config
 
