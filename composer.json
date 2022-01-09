@@ -3,13 +3,13 @@
     "type": "roundcube-plugin",
     "description": "Plugin that adds functionality so that a user can create a new password if the original is lost.",
     "homepage": "https://github.com/AlfnRU/roundcube-password_recovery/",
-    "license": "GPL",
+    "license": "GPL-3.0-or-later",
     "version": "1.0",
     "authors": [
         {
             "name": "Alexander Alferov",
             "email": "a@alfn.ru",
-            "role": "Lead"
+            "role": "Developer"
         }
     ],
     "repositories": [
