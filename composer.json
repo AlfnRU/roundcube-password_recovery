@@ -2,7 +2,7 @@
     "name": "alfnru/password_recovery",
     "type": "roundcube-plugin",
     "description": "Plugin that adds functionality so that a user can create a new password if the original is lost.",
-    "version": "1.0",
+    "version": "1.1",
     "license": "GPL-3.0-or-later",
     "homepage": "https://github.com/AlfnRU/roundcube-password_recovery/",
     "authors": [
