@@ -1,0 +1,65 @@
+<?php
+
+// Database connection string and table name with user passwords
+$config['pr_db_dsn']      = 'mysql://_USER_:_PASSWORD_@localhost/postfix';
+$config['pr_users_table'] = 'mailbox';
+
+// Array with names for ext_fields in 'pr_users_table'
+// When using the postfix database mailbox table, you must add two fields to this table: 'question' and 'answer'
+//
+// Execute this query in the postfix database:
+//
+//  ALTER TABLE mailbox ADD question VARCHAR(255) CHARACTER SET utf8 NOT NULL AFTER email_other;
+//  ALTER TABLE mailbox ADD answer VARCHAR(255) CHARACTER SET utf8 NOT NULL AFTER question;
+//
+$config['pr_fields'] = [
+    'altemail' => 'email_other',
+    'phone'    => 'phone',
+    'question' => 'question',
+    'answer'   => 'answer',
+];
+
+// Admin email (this account will receive alerts when an user does not have an alternative email and phone)
+$config['pr_admin_email'] = 'postmaster@your.domain.com';
+
+// Use secret question/answer to confirmation password recovery
+$config['pr_use_question'] = false;
+
+// Use message with code to confirmation password recovery
+$config['pr_use_confirm_code'] = true;
+
+// Minimum length of new password
+$config['pr_password_minimum_length'] = 8;
+
+// Confirmation code length
+$config['pr_confirm_code_length'] = 6;
+
+// Maximum number of attempts to send confirmation code
+$config['pr_confirm_code_count_max'] = 3;
+
+// Confirmation code duration (in minutes)
+$config['pr_confirm_code_validity_time'] = 30;
+
+// SMTP settings
+// $config['pr_default_smtp_server'] = 'tls://your.domain.com';
+// $config['pr_default_smtp_user']   = 'no-reply@your.domain.com';
+// $config['pr_default_smtp_pass']   = 'YOUR_SMTP_USER_PASSWORD';
+$config['pr_default_smtp_server'] = 'localhost';
+$config['pr_default_smtp_user']   = '';
+$config['pr_default_smtp_pass']   = '';
+
+// Full path to SMS send function
+// This function must accept 2 parameters: phone number and message,
+// and return true on success or false on failure
+//
+// Example of send SMS function using Clickatell HTTP API - see /lib/send.php
+//
+$config['pr_sms_send_function'] = dirname(__FILE__) . '/bin/sendsms.sh';
+
+// Enables logging of password changes into /logs/password.log
+$config['pr_password_log'] = true;
+
+// Set to TRUE if you need write debug messages into /log/console.log
+$config['pr_debug'] = false;
+
+?>
