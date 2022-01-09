@@ -15,12 +15,6 @@
 
  The Password plugin can also be used when configured accordingly.
 
-### Screenshots
-
-![Login with Elastic Skin](docs/login.png)
-
-![Recovery password](docs/reset.png)
-
 
 ### Install
 
@@ -28,6 +22,16 @@
  2. Add 'password_recovery' to $config['plugins'] in your Roundcube config
  3. Rename 'config.inc.php.dist' to 'config.inc.php'
  4. Configure the credentials to access the postfix database in the config.inc.php file
+
+### Screenshots
+
+![Login with Elastic Skin](docs/login.png)
+
+![Recovery password](docs/reset.png)
+
+![Recovery with code](docs/recovery.png)
+
+![Recovery with code and answer](docs/recovery2.png)
 
 
 ### 
