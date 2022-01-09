@@ -1,5 +1,5 @@
 {
-    "name": "AlfnRU/password_recovery",
+    "name": "alfnru/password_recovery",
     "type": "roundcube-plugin",
     "description": "Plugin that adds functionality so that a user can create a new password if the original is lost.",
     "homepage": "https://github.com/AlfnRU/roundcube-password_recovery/",
