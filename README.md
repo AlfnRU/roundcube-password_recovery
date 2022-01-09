@@ -35,12 +35,12 @@
 
 ### Settings
 
-![Settings for confirmation code](config_code.png)
+![Settings for confirmation code](docs/config_code.png)
 
 ![Recovery with code](docs/recovery.png)
 
 
-![Settings for secret question/answer](config_answer.png)
+![Settings for secret question/answer](docs/config_answer.png)
 
 ![Recovery with code and answer](docs/recovery2.png)
 
