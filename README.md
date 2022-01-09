@@ -23,15 +23,24 @@
  3. Rename 'config.inc.php.dist' to 'config.inc.php'
  4. Configure the credentials to access the postfix database in the config.inc.php file
 
+
 ### Screenshots
 
 ![Login with Elastic Skin](docs/login.png)
 
 ![Recovery password](docs/reset.png)
 
+![Identities](docs/identities.png)
+
+
+### Settings
+
+![Settings for confirmation code](config_code.png)
+
 ![Recovery with code](docs/recovery.png)
+
+
+![Settings for secret question/answer](config_answer.png)
 
 ![Recovery with code and answer](docs/recovery2.png)
 
-
-### 
