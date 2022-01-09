@@ -15,6 +15,12 @@
 
  The Password plugin can also be used when configured accordingly.
 
+### Screenshots
+
+![Login with Elastic Skin](docs/login.png)
+
+![Recovery password](docs/reset.png)
+
 
 ### Install
 
@@ -23,3 +29,5 @@
  3. Rename 'config.inc.php.dist' to 'config.inc.php'
  4. Configure the credentials to access the postfix database in the config.inc.php file
 
+
+### 

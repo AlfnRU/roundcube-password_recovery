@@ -17,7 +17,7 @@
         "authentication",
         "security",
         "password",
-        "recovery" 
+        "recovery"
     ],
     "repositories": [
         {
