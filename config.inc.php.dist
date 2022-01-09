@@ -4,14 +4,9 @@
 $config['pr_db_dsn']      = 'mysql://_USER_:_PASSWORD_@localhost/postfix';
 $config['pr_users_table'] = 'mailbox';
 
-// Array with names for ext_fields in 'pr_users_table'
-// When using the postfix database mailbox table, you must add two fields to this table: 'question' and 'answer'
-//
-// Execute this query in the postfix database:
-//
-//  ALTER TABLE mailbox ADD question VARCHAR(255) CHARACTER SET utf8 NOT NULL AFTER email_other;
-//  ALTER TABLE mailbox ADD answer VARCHAR(255) CHARACTER SET utf8 NOT NULL AFTER question;
-//
+// Array with names for ext_fields in 'pr_users_table': [name_for_plugin => name_in_db]
+// When using the postfix database 'mailbox' table, you must add two columns to this table: 'question' and 'answer'
+// If the plugin does not find the columns it needs in the database, they will be created automatically
 $config['pr_fields'] = [
     'altemail' => 'email_other',
     'phone'    => 'phone',
@@ -23,13 +18,10 @@ $config['pr_fields'] = [
 $config['pr_admin_email'] = 'postmaster@your.domain.com';
 
 // Use secret question/answer to confirmation password recovery
-$config['pr_use_question'] = false;
+$config['pr_use_question'] = true;
 
 // Use message with code to confirmation password recovery
 $config['pr_use_confirm_code'] = true;
-
-// Minimum length of new password
-$config['pr_password_minimum_length'] = 8;
 
 // Confirmation code length
 $config['pr_confirm_code_length'] = 6;
@@ -40,6 +32,19 @@ $config['pr_confirm_code_count_max'] = 3;
 // Confirmation code duration (in minutes)
 $config['pr_confirm_code_validity_time'] = 30;
 
+// Use the Password plugin to save a new password
+$config['pr_use_password_plugin'] = true;
+
+// Minimum length of new password 
+// !!! Note: needed if not used Password plugin)
+$config['pr_password_minimum_length'] = 8;
+
+// Require the new password to have at least the specified strength score.
+// Password strength is scored from 1 (weak) to 5 (strong).
+// !!! Note: needed if not used Password plugin)
+$config['pr_password_minimum_score'] = 1;
+
+
 // SMTP settings
 // $config['pr_default_smtp_server'] = 'tls://your.domain.com';
 // $config['pr_default_smtp_user']   = 'no-reply@your.domain.com';
@@ -48,6 +53,7 @@ $config['pr_default_smtp_server'] = 'localhost';
 $config['pr_default_smtp_user']   = '';
 $config['pr_default_smtp_pass']   = '';
 
+
 // Full path to SMS send function
 // This function must accept 2 parameters: phone number and message,
 // and return true on success or false on failure
@@ -55,6 +61,7 @@ $config['pr_default_smtp_pass']   = '';
 // Example of send SMS function using Clickatell HTTP API - see /lib/send.php
 //
 $config['pr_sms_send_function'] = dirname(__FILE__) . '/bin/sendsms.sh';
+
 
 // Enables logging of password changes into /logs/password.log
 $config['pr_password_log'] = true;
