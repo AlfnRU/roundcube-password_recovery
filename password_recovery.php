@@ -140,6 +140,11 @@ class password_recovery extends rcube_plugin {
     // Creating form for new password
     private function new_password_form() {
         $this->rc->output->add_label(
+            'password_recovery.newpassword',
+            'password_recovery.newpassword_confirm',
+            'password_recovery.question',
+            'password_recovery.answer',
+            'password_recovery.code',
             'password_recovery.recovery_password',
             'password_recovery.renew_code',
             'password_recovery.count_send_code_maximum',

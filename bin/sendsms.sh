@@ -5,7 +5,7 @@ COUNTRY_CODE="7"
 
 USER="smsd"
 GROUP="smsd"
-SPOOLDIR="/var/spool/sms/outgoing/"
+SPOOLDIR="/srv/data/sms/outgoing/"
 
 if [ -z "$*" ]; then
     echo "Usage: ./sendsms.sh \"phone number\" \"message\""
