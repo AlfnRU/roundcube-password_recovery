@@ -59,12 +59,12 @@ class password_recovery extends rcube_plugin {
         $this->use_password = ($this->rc->config->get('pr_use_password_plugin') && $this->rc->plugins->load_plugin('password', true));
 
         $new_fields = [
-            'token'          => ['type' => 'VARCHAR(255)', 'default' => '""'],
-            'token_validity' => ['type' => 'DATETIME'    , 'default' => '2000-01-01 00:00:00']
+            'token'          => ['type' => 'VARCHAR(255)', 'default' => '\'\''],
+            'token_validity' => ['type' => 'DATETIME'    , 'default' => '\'2000-01-01 00:00:00\'']
         ];
 
         foreach($this->fields as $field => $field_name){
-            $new_fields[$field_name] = ['type' => ($field == 'phone' ? 'VARCHAR(30)' : 'VARCHAR(255)'), 'default' => '""'];
+            $new_fields[$field_name] = ['type' => ($field == 'phone' ? 'VARCHAR(30)' : 'VARCHAR(255)'), 'default' => '\'\''];
         }
 
         foreach($new_fields as $field_name => $field_props){
