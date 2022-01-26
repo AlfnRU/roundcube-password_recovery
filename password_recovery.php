@@ -71,7 +71,7 @@ class password_recovery extends rcube_plugin {
             $query = "SELECT " . $field_name . " FROM " . $this->rc->config->get('pr_users_table');
             $result = $this->db->query($query);
             if (!$result) {
-                $query = "ALTER TABLE " . $this->rc->config->get('pr_users_table') . " ADD " . $field_name . " " . $field_props['type'] . " CHARACTER SET utf8 NOT NULL" . " DEFAULT " . $field_props['default'] ;
+                $query = "ALTER TABLE " . $this->rc->config->get('pr_users_table') . " ADD " . $field_name . " " . $field_props['type'] . " DEFAULT " . $field_props['default'];
                 $result = $this->db->query($query);
             }
         }
