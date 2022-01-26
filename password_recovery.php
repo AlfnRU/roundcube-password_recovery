@@ -59,20 +59,19 @@ class password_recovery extends rcube_plugin {
         $this->use_password = ($this->rc->config->get('pr_use_password_plugin') && $this->rc->plugins->load_plugin('password', true));
 
         $new_fields = [
-            'email_other'    => ['type' => 'VARCHAR(255)', 'default' => ''],
-            'phone'          => ['type' => 'VARCHAR(30)' , 'default' => ''],
-            'question'       => ['type' => 'VARCHAR(255)', 'default' => ''],
-            'answer'         => ['type' => 'VARCHAR(255)', 'default' => ''],
             'token'          => ['type' => 'VARCHAR(255)', 'default' => ''],
             'token_validity' => ['type' => 'DATETIME'    , 'default' => '2000-01-01 00:00:00']
         ];
+
+        foreach($this->fields as $field => $field_name){
+            $new_fields[$field_name] = ['type' => ($field == 'phone' ? 'VARCHAR(30)' : 'VARCHAR(255)'), 'default' => '""'];
+        }
 
         foreach($new_fields as $field_name => $field_props){
             $query = "SELECT " . $field_name . " FROM " . $this->rc->config->get('pr_users_table');
             $result = $this->db->query($query);
             if (!$result) {
-                $type = ($field == 'phone' ? 'VARCHAR(30)' : 'VARCHAR(255)');
-                $query = "ALTER TABLE " . $this->rc->config->get('pr_users_table') . " ADD " . $field_name . " " . $field_props['type'] . " DEFAULT " . $field_props['default'] . " CHARACTER SET utf8 NOT NULL";
+                $query = "ALTER TABLE " . $this->rc->config->get('pr_users_table') . " ADD " . $field_name . " " . $field_props['type'] . " CHARACTER SET utf8 NOT NULL" . " DEFAULT " . $field_props['default'] ;
                 $result = $this->db->query($query);
             }
         }
