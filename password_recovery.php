@@ -286,6 +286,7 @@ class password_recovery extends rcube_plugin {
                     if ($result != 0) {
                         $message = $this->gettext('write_failed') . ": " . $result;
                         $type = 'error';
+                        $this->debug($message);
                     }
                 } else {
                     $save['password'] = crypt($newpassword, '$1$' . rcube_utils::random_bytes(9));
