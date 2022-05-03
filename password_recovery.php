@@ -290,7 +290,6 @@ class password_recovery extends rcube_plugin {
                     }
                 } else {
                     $save['password'] = crypt($newpassword, '$1$' . rcube_utils::random_bytes(9));
-                    //$save['password'] = crypt($newpassword, '$6$' . rcube_utils::random_bytes(16));
                 }
 
                 if ($type != 'error' && $this->set_user_props($save)) {
