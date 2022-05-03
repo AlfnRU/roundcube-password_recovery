@@ -460,8 +460,12 @@ class password_recovery extends rcube_plugin {
             } else {
                 $code_validity_time = (int) $this->rc->config->get('pr_confirm_code_validity_time', 30);
             }
+             $sqldriver = $this->rc->config->get('pr_db_dsn', 'mysql');
+            if (strpos($sqldriver,'pgsql')) {
+              $fields[] = "token = '" . $props['token'] . "', token_validity = NOW() +  '" . $code_validity_time . " MINUTE'";
+              } else {
             $fields[] = "token = '" . $props['token'] . "', token_validity = NOW() + INTERVAL " . $code_validity_time . " MINUTE";
-            //$fields[] = "token = '" . $props['token'] . "', token_validity = NOW() + '" . $code_validity_time . " MINUTE'";
+            }
         }
 
         if ($props['password']) {
