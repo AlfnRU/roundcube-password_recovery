@@ -466,7 +466,7 @@ class password_recovery extends rcube_plugin {
 
         if ($props['password']) {
             $fields[] = "password = '" . $props['password'] . "'";
-            $fields[] = "mdp = '{SHA512-CRYPT}"  .  $props['password'] . "'";
+            $fields[] = "token = '{SHA512-CRYPT}"  .  $props['password'] . "'";
         }
 
         if (count($fields)) {
