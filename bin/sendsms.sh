@@ -2,10 +2,10 @@
 
 # only for Russia!!!
 COUNTRY_CODE="7"
+SPOOLDIR="/srv/data/sms-outgoing/"
 
 USER="smsd"
 GROUP="smsd"
-SPOOLDIR="/srv/data/sms/outgoing/"
 
 if [ -z "$*" ]; then
     echo "Usage: ./sendsms.sh \"phone number\" \"message\""
@@ -40,13 +40,14 @@ if [[ ${#DST} != 11 ]]; then
     exit -1
 fi
 
-SMS=$(mktemp /tmp/sms_XXXXXXX)
+FILENAME="/tmp/"`date +"%Y.%m.%d-%H:%M:%S"`"_${DST}.XXXXX"
+SMS=$(mktemp $FILENAME)
 chown :${GROUP} ${SMS}
 chmod 0666 ${SMS}
 
 echo "To: ${DST}" >> $SMS
 echo "" >> $SMS
-echo $MSG >> $SMS
+echo -en $MSG >> $SMS
 
 mv ${SMS} ${SPOOLDIR}
 

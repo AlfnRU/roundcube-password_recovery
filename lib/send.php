@@ -35,7 +35,7 @@ class password_recovery_send {
         $sms_send_function = $this->rc->config->get('pr_sms_send_function');
         if ($sms_send_function) {
             if (is_file($sms_send_function)) {
-                $ret = (int) exec("$sms_send_function $to $message");
+                $ret = (int) exec("bash $sms_send_function $to $message");
             } else if (is_callable($sms_send_function)) {
                 $ret = $sms_send_function($to, $message);
             }
@@ -126,9 +126,14 @@ class password_recovery_send {
                 $body = strtr(file_get_contents($file), ['[LINK]' => $link, '[CODE]' => $confirm_code]);
                 $subject = $this->pr->gettext('email_subject');
 
+                $from = $this->rc->config->get('pr_replyto_email');
+                if(!$from){
+                    $from = get_email_from($this->rc->config->get('pr_admin_email'));
+                }
+
                 $send_email = $this->send_email(
                     $this->user['altemail'],
-                    $this->get_email_from($this->rc->config->get('pr_admin_email')),
+                    $from,
                     $subject,
                     $body
                 );

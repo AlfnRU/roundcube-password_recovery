@@ -17,6 +17,9 @@ $config['pr_fields'] = [
 // Admin email (this account will receive alerts when an user does not have an alternative email and phone)
 $config['pr_admin_email'] = 'postmaster@your.domain.com';
 
+// Address to be indicated as reply-to in mail notifications
+$config['pr_replyto_email'] = 'postmaster@your.domain.com';
+
 // Use secret question/answer to confirmation password recovery
 $config['pr_use_question'] = false;
 
