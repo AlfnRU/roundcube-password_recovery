@@ -57,7 +57,7 @@ class password_recovery_send {
         $headers .= "Subject: $subject\r\n";
         $headers .= "Reply-To: $from\r\n";
 
-        $txt_body  = "--=_$ctb";
+        $txt_body  = "--=_$ctb\r\n";
         $txt_body .= "\r\n";
         $txt_body .= "Content-Transfer-Encoding: 7bit\r\n";
         $txt_body .= "Content-Type: text/plain; charset=" . $this->rc->config->get('default_charset', RCUBE_CHARSET) . "\r\n";
