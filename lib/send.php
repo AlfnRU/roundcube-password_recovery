@@ -101,7 +101,7 @@ class password_recovery_send {
 
     // Send message to administrator
     function send_alert_to_admin($user_requesting_new_password) {
-        $file = dirname(__FILE__) . "/../localization/" . $this->rc->user->language . "/alert_for_admin_to_reset_pw.html";
+        $file = $this->get_localization_dir($this->rc->user->language) . "/alert_for_admin_to_reset_pw.html";
         $body = strtr(file_get_contents($file), array('[USER]' => $user_requesting_new_password));
         $subject = $this->pr->gettext('email_subject_admin');
         return $this->send_email(
@@ -121,7 +121,7 @@ class password_recovery_send {
         if ($confirm_code && $this->pr->set_user_props(['token'=>$confirm_code])) {
             // send EMail
             if ($this->user['have_altemail']) {
-                $file = dirname(__FILE__) . "/../localization/" . $this->rc->user->language . "/reset_pw_body.html";
+                $file = $this->get_localization_dir($this->rc->user->language) . "/reset_pw_body.html";
                 $link = "http://{$_SERVER['SERVER_NAME']}/?_task=login&_action=plugin.password_recovery&_username=". $this->user['username'];
                 $body = strtr(file_get_contents($file), ['[LINK]' => $link, '[CODE]' => $confirm_code]);
                 $subject = $this->pr->gettext('email_subject');
@@ -194,6 +194,14 @@ class password_recovery_send {
     function get_email_from($email) {
         $parts = explode('@',$email);
         return 'no-reply@'.$parts[1];
+    }
+
+    function get_localization_dir($language) {
+        $file = dirname(__FILE__) . "/../localization/" . $language;
+        if (!file_exists($file)) {
+            $file = dirname(__FILE__) . "/../localization/en_US";
+        }
+        return $file;
     }
 }
 
