@@ -128,7 +128,7 @@ class password_recovery_send {
 
                 $from = $this->rc->config->get('pr_replyto_email');
                 if(!$from){
-                    $from = get_email_from($this->rc->config->get('pr_admin_email'));
+                    $from = $this->get_email_from($this->rc->config->get('pr_admin_email'));
                 }
 
                 $send_email = $this->send_email(
