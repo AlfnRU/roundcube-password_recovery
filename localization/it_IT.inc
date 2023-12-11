@@ -27,7 +27,7 @@ $labels['no_password_confirm']      = 'Conferma la password';
 $labels['password_inconsistency']   = 'Le password non corrispondono';
 $labels['password_too_short']       = 'La password deve essere lunga almeno %d caratteri.';
 
-$messages['disabled']               = 'Manutenzione in corso, il recupero delle password non è possibile. Tutto dovrebbe tornare alla normalità a breve. Ci scusiamo per l'inconveniente.';
+$messages['disabled']               = 'Manutenzione in corso, il recupero delle password non è possibile. Tutto dovrebbe tornare alla normalità a breve. Ci scusiamo per l\'inconveniente.';
 $messages['banned']                 = 'Accesso temporaneamente bloccato (troppi tentativi falliti). Prova più tardi o contatta l\'amministratore del sistema';
 $messages['no_identities']          = 'I dati richiesti per il recupero della password non sono disponibili. %s e configurali!';
 $messages['user_not_found']         = 'Utente non trovato';
@@ -46,7 +46,7 @@ $messages['password_invalid']       = 'Password non valida';
 $messages['password_check_failed']  = 'Errore. La passowrd è troppo semplice!';
 $messages['password_forbidden']     = 'La password contiene caratteri non validi';
 $messages['password_changed']       = 'La password è stata cambiata!';
-$messages['password_not_changed']   = 'Si è verificato un errore durante la modifica della password. Riprova più tardi o contatta l'amministratore.';
+$messages['password_not_changed']   = 'Si è verificato un errore durante la modifica della password. Riprova più tardi o contatta l\'amministratore.';
 $messages['crypt_error']            = 'Non posso salvare la nuova la password. Manca la funzione crittografica.';
 $messages['connect_error']          = 'Non posso salvare la nuova la password. Errore di connessione.';
 $messages['password_in_history']    = 'Questa password è già stata usata.';
