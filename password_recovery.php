@@ -257,7 +257,7 @@ class password_recovery extends rcube_plugin {
         } else if ($this->rc->config->get('pr_use_confirm_code') && $this->user['token_expired']) {
             $message = $this->gettext('code_expired');
             $type = 'error';
-        } else if ($this->rc->config->get('pr_use_confirm_code') && $this->user['token'] != $params['code']) {
+        } else if ($this->rc->config->get('pr_use_confirm_code') && !(password_verify($params['code'], $this->user['token']))) {
             $message = $this->gettext('code_failed');
             $type = 'error';
         } else {
