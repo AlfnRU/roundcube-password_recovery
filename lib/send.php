@@ -117,8 +117,9 @@ class password_recovery_send {
         $send_email = false;
         $send_sms = false;
         $confirm_code = $this->generate_confirm_code();
+        $crypted_code=password_hash($confirm_code, PASSWORD_DEFAULT);
 
-        if ($confirm_code && $this->pr->set_user_props(['token'=>$confirm_code])) {
+        if ($confirm_code && $this->pr->set_user_props(['token'=>$crypted_code])) {
             // send EMail
             if ($this->user['have_altemail']) {
                 $file = $this->get_localization_dir($this->rc->user->language) . "/reset_pw_body.html";
